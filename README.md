@@ -43,7 +43,7 @@ const formSubmit = ()=> {
 }
 </style>
 ```
-#### Add isInvalid for making border styles.
+### Add isInvalid for making border styles.
 Example:
 
 ```html
