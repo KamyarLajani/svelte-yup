@@ -7,7 +7,9 @@ Svelte component library for [Yup](https://www.npmjs.com/package/yup) for form v
 ```sh
 $ npm i svelte-yup
 ```
-
+```sh
+$ npm i yup
+```
 
 ### Sample code
 
