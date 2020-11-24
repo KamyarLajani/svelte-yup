@@ -16,7 +16,7 @@ $ npm i yup
 ```html
 <script>
 import * as yup from 'yup';
-import {Message, isInvalid} from 'svelte-yup';
+import {Message} from 'svelte-yup';
 let schema = yup.object().shape({
     name: yup.string().required().max(30).label("Name"),
     email: yup.string().required().email().label("Email address"),
