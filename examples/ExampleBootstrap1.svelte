@@ -17,7 +17,7 @@ const formSubmit = ()=> {
     }
 }
 </script>
-    
+
 <form class="form" on:submit|preventDefault="{formSubmit}">
     <div class="form-group">
         <label for="name">Name</label>
