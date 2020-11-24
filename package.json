@@ -27,10 +27,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KamyarLajani/svelte-validoz.git"
+    "url": "git+https://github.com/KamyarLajani/svelte-yup.git"
   },
   "description": "Svelte component library for form validation with yup",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "dependencies": {},
   "author": "Kamyar Lajani",
   "license": "MIT",
