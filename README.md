@@ -43,7 +43,7 @@ const formSubmit = ()=> {
 }
 </style>
 ```
-##### Add isInvalid for making border styles.
+#### Add isInvalid for making border styles.
 Example:
 
 ```html
@@ -70,7 +70,7 @@ $: invalid = (field)=>{
 }
 </style>
 ```
-#### All messages in one place
+### All messages in one place
 Example below to put all messages in one place by `AllMessages` component.
 ```js
 import {AllMessages} from 'svelte-yup';
