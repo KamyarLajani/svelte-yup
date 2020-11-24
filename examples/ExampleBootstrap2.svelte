@@ -27,7 +27,7 @@ const formSubmit = ()=> {
 <form class="form" on:submit|preventDefault="{formSubmit}">
     <div class="form-group">
         <label for="name">Name</label>
-        <input type="text" id="name" class="form-control {invalid('name') ? 'invalid' : ''}" placeholder="Name" bind:value={fields.name}>
+        <input type="text" id="name" class="form-control {invalid('name') ? 'invalid' : ''}"  bind:value={fields.name}>
         <Message schema={schema} fields={fields} name="name" submited={submited}/>
     </div>
     <div class="form-group">

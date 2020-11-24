@@ -21,7 +21,7 @@ const formSubmit = ()=> {
 <form class="form" on:submit|preventDefault="{formSubmit}">
     <div class="form-group">
         <label for="name">Name</label>
-        <input type="text" id="name" class="form-control" placeholder="Name" bind:value={fields.name}>
+        <input type="text" id="name" class="form-control" bind:value={fields.name}>
     </div>
     <div class="form-group">
         <label for="email">Email address</label>
