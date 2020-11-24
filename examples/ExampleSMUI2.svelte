@@ -1,7 +1,6 @@
 <script>
 import * as yup from 'yup';
-import Message from './Message.svelte';
-import {isInvalid} from './isInvalid';
+import {Message, isInvalid} from 'svelte-yup';
 import Textfield from '@smui/textfield';
 import Button from '@smui/button';
 let schema = yup.object().shape({
@@ -48,6 +47,5 @@ const formSubmit = ()=> {
     </div>
     <Textfield label="Answer 3+3 = " invalid={invalid("answer") ? true : false} type="number" bind:value={fields.answer}/>
     <Message schema={schema} fields={fields} name="answer" submited={submited}/>
-    <Message schema={schema} fields={fields} name="gender" submited={submited}/>
     <Button letiant="raised" class="button">Sign in</Button>
 </form>

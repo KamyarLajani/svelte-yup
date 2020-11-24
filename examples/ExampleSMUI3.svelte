@@ -1,6 +1,6 @@
 <script>
 import * as yup from 'yup';
-import {Message} from 'svelte-yup';
+import {AllMessages} from 'svelte-yup';
 import Textfield from '@smui/textfield';
 import Button from '@smui/button';
 let schema = yup.object().shape({
@@ -22,11 +22,8 @@ const formSubmit = ()=> {
     
 <form class="form" on:submit|preventDefault="{formSubmit}">
     <Textfield label="Name" type="text" bind:value={fields.name} />
-    <Message schema={schema} fields={fields} name="name" submited={submited}/>
     <Textfield label="email" type="email" bind:value={fields.email}/>
-    <Message schema={schema} fields={fields} name="email" submited={submited}/>
     <Textfield label="Age" type="number" bind:value={fields.age}/>
-    <Message schema={schema} fields={fields} name="age" submited={submited}/>
     <div class="form-group">
         <p>Gender</p>
         <div class="form-check">
@@ -40,7 +37,6 @@ const formSubmit = ()=> {
         </div>
     </div>
     <Textfield label="Answer 3+3 = " type="number" bind:value={fields.answer}/>
-    <Message schema={schema} fields={fields} name="answer" submited={submited}/>
-    <Message schema={schema} fields={fields} name="gender" submited={submited}/>
+    <AllMessages schema={schema} fields={fields} submited={submited}/>
     <Button letiant="raised" class="button">Sign in</Button>
 </form>

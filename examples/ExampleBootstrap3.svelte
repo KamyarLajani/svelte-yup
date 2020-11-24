@@ -1,8 +1,6 @@
 <script>
 import * as yup from 'yup';
-import {Message} from 'svelte-yup';
-import Textfield from '@smui/textfield';
-import Button from '@smui/button';
+import {AllMessages} from 'svelte-yup';
 let schema = yup.object().shape({
     name: yup.string().required().max(30).label("Name"),
     email: yup.string().required().email().label("Email address"),
@@ -21,12 +19,18 @@ const formSubmit = ()=> {
 </script>
     
 <form class="form" on:submit|preventDefault="{formSubmit}">
-    <Textfield label="Name" type="text" bind:value={fields.name} />
-    <Message schema={schema} fields={fields} name="name" submited={submited}/>
-    <Textfield label="email" type="email" bind:value={fields.email}/>
-    <Message schema={schema} fields={fields} name="email" submited={submited}/>
-    <Textfield label="Age" type="number" bind:value={fields.age}/>
-    <Message schema={schema} fields={fields} name="age" submited={submited}/>
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" class="form-control" placeholder="Name" bind:value={fields.name}>
+    </div>
+    <div class="form-group">
+        <label for="email">Email address</label>
+        <input id="email" type="text" class="form-control" bind:value={fields.email}>
+    </div>
+    <div class="form-group">
+        <label for="age">Age</label>
+        <input type="text" id="age" class="form-control" bind:value={fields.age}>
+    </div>
     <div class="form-group">
         <p>Gender</p>
         <div class="form-check">
@@ -36,11 +40,12 @@ const formSubmit = ()=> {
             <div class="radio">
                 <label><input type="radio" value="female" bind:group={fields.gender}> Female</label>
             </div>
-            <Message schema={schema} fields={fields} name="gender" submited={submited}/>
         </div>
     </div>
-    <Textfield label="Answer 3+3 = " type="number" bind:value={fields.answer}/>
-    <Message schema={schema} fields={fields} name="answer" submited={submited}/>
-    <Message schema={schema} fields={fields} name="gender" submited={submited}/>
-    <Button letiant="raised" class="button">Sign in</Button>
+    <div class="form-group">
+        <label for="answer">Answer 3+3 = </label>
+        <input type="text" id="answer" class="form-control" bind:value={fields.answer}>
+    </div>
+    <AllMessages schema={schema} fields={fields} submited={submited}/>
+    <button type="submit" class="btn btn-primary">Submit</button>
 </form>
