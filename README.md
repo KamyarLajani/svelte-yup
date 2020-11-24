@@ -94,13 +94,13 @@ import {AllMessages} from 'svelte-yup';
 `isInvalid(schema:object, fields:object, field:string)`
 
 ### Examples with source code
- - [ExampleBootstrap1](https://github.com/KamyarLajani/svelte-yup/blob/main/examples/ExampleBootstrap1.svelte)
- -  [ExampleBootstrap2](https://github.com/KamyarLajani/svelte-yup/blob/main/examples/ExampleBootstrap2.svelte)
- -  [ExampleBootstrap3](https://github.com/KamyarLajani/svelte-yup/blob/main/examples/ExampleBootstrap3.svelte)
+ - [ExampleBootstrap1](https://github.com/KamyarLajani/svelte-yup/blob/master/examples/ExampleBootstrap1.svelte)
+ -  [ExampleBootstrap2](https://github.com/KamyarLajani/svelte-yup/blob/master/examples/ExampleBootstrap2.svelte)
+ -  [ExampleBootstrap3](https://github.com/KamyarLajani/svelte-yup/blob/master/examples/ExampleBootstrap3.svelte)
 
- - [ExampleSMUI1](https://github.com/KamyarLajani/svelte-yup/blob/main/examples/ExampleSMUI1.svelte)
-  - [ExampleSMUI2](https://github.com/KamyarLajani/svelte-yup/blob/main/examples/ExampleSMUI2.svelte)
-  - [ExampleSMUI3](https://github.com/KamyarLajani/svelte-yup/blob/main/examples/ExampleSMUI3.svelte)
+ - [ExampleSMUI1](https://github.com/KamyarLajani/svelte-yup/blob/master/examples/ExampleSMUI1.svelte)
+  - [ExampleSMUI2](https://github.com/KamyarLajani/svelte-yup/blob/master/examples/ExampleSMUI2.svelte)
+  - [ExampleSMUI3](https://github.com/KamyarLajani/svelte-yup/blob/master/examples/ExampleSMUI3.svelte)
 
 ### Author
 Kamyar Lajani
