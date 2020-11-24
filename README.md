@@ -5,7 +5,7 @@ Svelte component library for [Yup](https://www.npmjs.com/package/yup) for form v
 ### Installation
 
 ```sh
-$ npm i svelte-yup
+$ npm i --save-dev svelte-yup
 ```
 ```sh
 $ npm i yup
