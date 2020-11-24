@@ -41,6 +41,5 @@ const formSubmit = ()=> {
     </div>
     <Textfield label="Answer 3+3 = " type="number" bind:value={fields.answer}/>
     <Message schema={schema} fields={fields} name="answer" submited={submited}/>
-    <Message schema={schema} fields={fields} name="gender" submited={submited}/>
     <Button letiant="raised" class="button">Sign in</Button>
 </form>
