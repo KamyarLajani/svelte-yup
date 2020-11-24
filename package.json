@@ -1,5 +1,5 @@
 {
-  "name": "svelte-validoz",
+  "name": "svelte-yup",
   "svelte": "src/index.js",
   "module": "dist/index.mjs",
   "main": "dist/index.js",
@@ -15,10 +15,11 @@
   },
   "keywords": [
     "svelte",
-    "validoz",
+    "yup",
+    "svelte-yup",
+    "svelte-validation",
     "svelte-validoz",
-    "svelte-form",
-    "svelte-validation"
+    "svelte-form"
   ],
   "files": [
     "src",
@@ -28,13 +29,13 @@
     "type": "git",
     "url": "git+https://github.com/KamyarLajani/svelte-validoz.git"
   },
-  "description": "svelte-validoz is svelte form validation library",
-  "version": "1.0.9",
+  "description": "Svelte component library for form validation with yup",
+  "version": "0.0.1",
   "dependencies": {},
   "author": "Kamyar Lajani",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/KamyarLajani/svelte-validoz/issues"
+    "url": "https://github.com/KamyarLajani/svelte-yup/issues"
   },
-  "homepage": "https://github.com/KamyarLajani/svelte-validoz#readme"
+  "homepage": "https://github.com/KamyarLajani/svelte-yup#readme"
 }
