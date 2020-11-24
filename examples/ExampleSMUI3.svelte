@@ -33,7 +33,6 @@ const formSubmit = ()=> {
             <div class="radio">
                 <label><input type="radio" value="female" bind:group={fields.gender}> Female</label>
             </div>
-            <Message schema={schema} fields={fields} name="gender" submited={submited}/>
         </div>
     </div>
     <Textfield label="Answer 3+3 = " type="number" bind:value={fields.answer}/>
