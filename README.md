@@ -31,9 +31,9 @@ const formSubmit = ()=> {
 }
 </script>
 <form class="form" on:submit|preventDefault="{formSubmit}">
-    <input type="text" id="name" placeholder="Name" bind:value={fields.name}>
+    <input type="text" placeholder="Name" bind:value={fields.name}>
     <Message schema={schema} fields={fields} name="name" submited={submited}/>
-    <input id="email" type="text" placeholder="Email address" bind:value={fields.email}>
+    <input type="text" placeholder="Email address" bind:value={fields.email}>
     <Message schema={schema} fields={fields} name="email" submited={submited}/>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
@@ -63,7 +63,7 @@ $: invalid = (field)=>{
 
 ```
 ```html
-<input type="text" id="name" class="{invalid('name') ? 'invalid' : ''}" placeholder="Name" bind:value={fields.name}>
+<input type="text" class="{invalid('name') ? 'invalid' : ''}" placeholder="Name" bind:value={fields.name}>
 <style>
 .invalid {
     border-color: red !important;
