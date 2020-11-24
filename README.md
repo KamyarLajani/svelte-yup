@@ -1,4 +1,4 @@
-# svelte-validoz
+# svelte-yup
 
 Svelte component library for [Yup](https://www.npmjs.com/package/yup) for form validation.
 
