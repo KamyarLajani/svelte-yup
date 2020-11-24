@@ -11,7 +11,9 @@ $ npm i --save-dev svelte-yup
 $ npm i yup
 ```
 ![GIF demo](https://raw.githubusercontent.com/KamyarLajani/svelte-yup/master/demo1.gif)
+
 Using Svelte material UI (SMUI)
+
 ![GIF demo](https://raw.githubusercontent.com/KamyarLajani/svelte-yup/master/demo2.gif)
 ### Sample code
 
