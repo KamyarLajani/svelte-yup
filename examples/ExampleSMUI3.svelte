@@ -22,7 +22,7 @@ const formSubmit = ()=> {
     
 <form class="form" on:submit|preventDefault="{formSubmit}">
     <Textfield label="Name" type="text" bind:value={fields.name} />
-    <Textfield label="email" type="email" bind:value={fields.email}/>
+    <Textfield label="Email address" type="email" bind:value={fields.email}/>
     <Textfield label="Age" type="number" bind:value={fields.age}/>
     <div class="form-group">
         <p>Gender</p>

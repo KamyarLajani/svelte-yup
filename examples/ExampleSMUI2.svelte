@@ -29,7 +29,7 @@ const formSubmit = ()=> {
 <form class="form" on:submit|preventDefault="{formSubmit}">
     <Textfield label="Name" invalid={invalid("name") ? true : false} type="text" bind:value={fields.name} />
     <Message schema={schema} fields={fields} name="name" submited={submited}/>
-    <Textfield label="email" invalid={invalid("email") ? true : false} type="email" bind:value={fields.email}/>
+    <Textfield label="Email address" invalid={invalid("email") ? true : false} type="email" bind:value={fields.email}/>
     <Message schema={schema} fields={fields} name="email" submited={submited}/>
     <Textfield label="Age" invalid={invalid("age") ? true : false} type="number" bind:value={fields.age}/>
     <Message schema={schema} fields={fields} name="age" submited={submited}/>
