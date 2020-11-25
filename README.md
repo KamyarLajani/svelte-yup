@@ -102,9 +102,9 @@ import {AllMessages} from 'svelte-yup';
 | `AllMessages` | `errors` |
 
 ### Functions
-`validate(schema:Object, fields:Object)`
-`isValid(errors:Array)`
-`isInvalid(errors:Array, name:String)`
+`validate(schema:Object, fields:Object)` 
+`isValid(errors:Array)` 
+`isInvalid(errors:Array, name:String)` 
 
 ### Example disable button until everything validated
 
