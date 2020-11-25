@@ -1,20 +1,14 @@
 <script>
-    export let schema;
-    export let fields;
-    export let submited;
-  </script>
+export let errors;
+</script>
   
-  
-{#await schema.validate(fields, {abortEarly: false}) then result}
-    <p></p>
-    {:catch error}
-        {#each error.inner as inner, i}
-            {#if submited}
-                <p class="invalid">{error.errors[i]}</p>
-            {/if}
-        {/each}
-
-{/await}
+{#if errors}
+  {#if errors.length > 0}
+      {#each errors as error}
+            <p class="invalid">{error.errors[0]}</p>
+      {/each}
+  {/if}
+{/if}
   
 <style>
   p.invalid {

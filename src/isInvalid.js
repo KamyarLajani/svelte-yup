@@ -1,10 +1,20 @@
-export let isInvalid = (schema, fields, field)=>{
+
+export let isInvalid = (errors, name)=>{
     let invalid = false;
-    try {
-        schema.validateSyncAt(field, fields);
+    if(errors){
+        if(errors.length > 0){
+            for(let error of errors){
+                if(error.path == name){
+                    invalid = true;
+                }
+            }
+        }
+        else {
+            invalid = false;
+        }
     }
-    catch(error){
-        invalid = true;
+    else {
+        invalid = false;
     }
     return invalid;
 }

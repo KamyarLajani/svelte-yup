@@ -1,21 +1,24 @@
 <script>
-    export let schema;
-    export let fields;
+    export let errors;
     export let name;
-    export let submited;
 </script>
 
-{#await schema.validateAt(name, fields) then result}
-<p></p>
-{:catch error}
-    {#if submited}
-        <p class="invalid">{error.errors[0]}</p>
+
+{#if errors}
+    {#if errors.length > 0}
+        {#each errors as error}
+            {#if error.path === name}
+                <p class="invalid">{error.errors[0]}</p>
+            {/if}
+        {/each}
     {/if}
-{/await}
-  
+{/if}
+
+
 <style>
 p.invalid {
     color: red;
+    font-size: 14px;
 }
 </style>
   
