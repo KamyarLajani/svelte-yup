@@ -1,6 +1,6 @@
 <script>
 import * as yup from 'yup';
-import {AllMessages} from 'svelte-yup';
+import {validate, isValid, AllMessages} from 'svelte-yup';
 let schema = yup.object().shape({
     name: yup.string().required().max(30).label("Name"),
     email: yup.string().required().email().label("Email address"),
@@ -9,15 +9,21 @@ let schema = yup.object().shape({
     gender: yup.string().required().label("Gender"),
 });
 let fields = {email: "", name: "", age:"", gender:"", answer: ""};
+let errors;
 let submited = false;
+$: if(submited){
+    errors = validate(schema, fields);
+}
+
 const formSubmit = ()=> {
     submited = true;
-    if(schema.isValidSync(fields)){
+    errors = validate(schema, fields);
+    if(isValid(errors)){
         alert('Everything is validated!');
     }
 }
 </script>
-    
+
 <form class="form" on:submit|preventDefault="{formSubmit}">
     <div class="form-group">
         <label for="name">Name</label>
@@ -46,6 +52,7 @@ const formSubmit = ()=> {
         <label for="answer">Answer 3+3 = </label>
         <input type="text" id="answer" class="form-control" bind:value={fields.answer}>
     </div>
-    <AllMessages schema={schema} fields={fields} submited={submited}/>
+    <AllMessages errors={errors} />
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+    

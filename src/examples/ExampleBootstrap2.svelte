@@ -1,6 +1,6 @@
 <script>
 import * as yup from 'yup';
-import {Message, isInvalid} from 'svelte-yup';
+import {validate, isValid, isInvalid, Message} from 'svelte-yup';
 let schema = yup.object().shape({
     name: yup.string().required().max(30).label("Name"),
     email: yup.string().required().email().label("Email address"),
@@ -9,16 +9,21 @@ let schema = yup.object().shape({
     gender: yup.string().required().label("Gender"),
 });
 let fields = {email: "", name: "", age:"", gender:"", answer: ""};
+let errors;
 let submited = false;
-$: invalid = (field)=>{
+$: if(submited){
+    errors = validate(schema, fields);
+}
+$: invalid = (name)=>{
     if(submited){
-        return isInvalid(schema, fields, field);
+        return isInvalid(errors, name);
     }
     return false;
 }
 const formSubmit = ()=> {
     submited = true;
-    if(schema.isValidSync(fields)){
+    errors = validate(schema, fields);
+    if(isValid(errors)){
         alert('Everything is validated!');
     }
 }
@@ -27,18 +32,18 @@ const formSubmit = ()=> {
 <form class="form" on:submit|preventDefault="{formSubmit}">
     <div class="form-group">
         <label for="name">Name</label>
-        <input type="text" id="name" class="form-control {invalid('name') ? 'invalid' : ''}" bind:value={fields.name}>
-        <Message schema={schema} fields={fields} name="name" submited={submited}/>
+        <input type="text" id="name" class="form-control {invalid('Name') ? 'invalid' : ''}" bind:value={fields.name}>
+        <Message errors={errors} name="Name"/>
     </div>
     <div class="form-group">
         <label for="email">Email address</label>
-        <input id="email" type="text" class="form-control {invalid('email') ? 'invalid' : ''}" bind:value={fields.email}>
-        <Message schema={schema} fields={fields} name="email" submited={submited}/>
+        <input id="email" type="text" class="form-control {invalid('Email address') ? 'invalid' : ''}" bind:value={fields.email}>
+        <Message errors={errors} name="Email address"/>
     </div>
     <div class="form-group">
         <label for="age">Age</label>
-        <input type="text" id="age" class="form-control {invalid('age') ? 'invalid' : ''}" bind:value={fields.age}>
-        <Message schema={schema} fields={fields} name="age" submited={submited}/>
+        <input type="text" id="age" class="form-control {invalid('Age') ? 'invalid' : ''}" bind:value={fields.age}>
+        <Message errors={errors} name="Age"/>
     </div>
     <div class="form-group">
         <p>Gender</p>
@@ -49,13 +54,13 @@ const formSubmit = ()=> {
             <div class="radio">
                 <label><input type="radio" value="female" bind:group={fields.gender}> Female</label>
             </div>
-            <Message schema={schema} fields={fields} name="gender" submited={submited}/>
+            <Message errors={errors} name="Gender"/>
         </div>
     </div>
     <div class="form-group">
         <label for="answer">Answer 3+3 = </label>
-        <input type="text" id="answer" class="form-control {invalid('answer') ? 'invalid' : ''}" bind:value={fields.answer}>
-        <Message schema={schema} fields={fields} name="answer" submited={submited}/>
+        <input type="text" id="answer" class="form-control {invalid('Answer') ? 'invalid' : ''}" bind:value={fields.answer}>
+        <Message errors={errors} name="Answer"/>
     </div>
         
     <button type="submit" class="btn btn-primary">Submit</button>

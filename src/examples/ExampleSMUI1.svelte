@@ -1,6 +1,6 @@
 <script>
 import * as yup from 'yup';
-import {Message} from 'svelte-yup';
+import {validate, isValid, Message} from 'svelte-yup';
 import Textfield from '@smui/textfield';
 import Button from '@smui/button';
 let schema = yup.object().shape({
@@ -11,10 +11,15 @@ let schema = yup.object().shape({
     gender: yup.string().required().label("Gender"),
 });
 let fields = {email: "", name: "", age:"", gender:"", answer: ""};
+let errors;
 let submited = false;
+$: if(submited){
+    errors = validate(schema, fields);
+}
 const formSubmit = ()=> {
     submited = true;
-    if(schema.isValidSync(fields)){
+    errors = validate(schema, fields);
+    if(isValid(errors)){
         alert('Everything is validated!');
     }
 }
@@ -22,11 +27,11 @@ const formSubmit = ()=> {
     
 <form class="form" on:submit|preventDefault="{formSubmit}">
     <Textfield label="Name" type="text" bind:value={fields.name} />
-    <Message schema={schema} fields={fields} name="name" submited={submited}/>
+    <Message errors={errors} name="Name"/>
     <Textfield label="Email address" type="email" bind:value={fields.email}/>
-    <Message schema={schema} fields={fields} name="email" submited={submited}/>
+    <Message errors={errors} name="Email address"/>
     <Textfield label="Age" type="number" bind:value={fields.age}/>
-    <Message schema={schema} fields={fields} name="age" submited={submited}/>
+    <Message errors={errors} name="Age"/>
     <div class="form-group">
         <p>Gender</p>
         <div class="form-check">
@@ -36,10 +41,10 @@ const formSubmit = ()=> {
             <div class="radio">
                 <label><input type="radio" value="female" bind:group={fields.gender}> Female</label>
             </div>
-            <Message schema={schema} fields={fields} name="gender" submited={submited}/>
+            <Message errors={errors} name="Gender"/>
         </div>
     </div>
     <Textfield label="Answer 3+3 = " type="number" bind:value={fields.answer}/>
-    <Message schema={schema} fields={fields} name="answer" submited={submited}/>
-    <Button letiant="raised" class="button">Sign in</Button>
+    <Message errors={errors} name="Answer"/>
+    <Button letiant="raised" class="button">Submit</Button>
 </form>
