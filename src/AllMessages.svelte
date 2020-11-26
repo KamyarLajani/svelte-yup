@@ -14,6 +14,7 @@ export let errors;
   p.invalid {
       color: red;
       margin: 0px;
+      font-size: 14px;
   }
 </style>
   
