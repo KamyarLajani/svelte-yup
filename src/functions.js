@@ -21,6 +21,7 @@ export let isValid = (errors)=>{
     return valid;
 }
 
+
 export let isInvalid = (errors, name)=>{
     let invalid = false;
     if(errors){
@@ -40,4 +41,3 @@ export let isInvalid = (errors, name)=>{
     }
     return invalid;
 }
-
