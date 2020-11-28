@@ -22,7 +22,7 @@ function formSubmit(){
 }
 </script>
     
-<Form class="form" {schema} {fields} submitHandler={formSubmit} {submitted}>
+<Form class="form" {schema} {fields} submitHandler={formSubmit} {submitted} color="#b00020">
     <Textfield label="Name" type="text" bind:value={fields.name} />
     <Message name="name"/>
     <Textfield label="Email address" type="email" bind:value={fields.email}/>
