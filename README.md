@@ -19,41 +19,32 @@ $ npm i yup
 
 ```html
 <script>
-import * as yup from 'yup';
-import {Message, validate, isValid} from 'svelte-yup';
-
-
-let schema = yup.object().shape({
-    name: yup.string().required().max(30).label("Name"),
-    email: yup.string().required().email().label("Email address"),
-});
-let fields = {email: "", name: ""};
-let errors;
-let submited = false;
-$: invalid = (name)=>{
-    if(submited){
-        return isInvalid(errors, name);
+    import * as yup from 'yup';
+    import {Form, Message} from 'svelte-yup';
+    let schema = yup.object().shape({
+        name: yup.string().required().max(30).label("Name"),
+        email: yup.string().required().email().label("Email address"),
+    });
+    let fields = {email: "", name: ""};
+    let submitted = false;
+    let isValid;
+    function formSubmit(){
+        submitted = true;
+        isValid = schema.isValidSync(fields);
+        if(isValid){
+            alert('Everything is validated!');
+        }
     }
-    return false;
-}
-$: if(submited){
-    errors = validate(schema, fields);
-}
-const formSubmit = ()=> {
-    submited = true;
-    errors = validate(schema, fields);
-    if(isValid(errors)){
-        alert('Everything is validated!');
-    }
-}
-</script> 
-<form class="form" on:submit|preventDefault="{formSubmit}">
-    <input type="text" class="{invalid("Name") ? 'invalid' : ''}" placeholder="Name" bind:value={fields.name}>
-    <Message errors={errors} name="Name" />
-    <input type="text" class="{invalid("Email address") ? 'invalid' : ''}" placeholder="Email address" bind:value={fields.email}>
-    <Message errors={errors} name="Email address" />
+</script>
+
+<Form class="form" {schema} {fields} submitHandler={formSubmit} {submitted}>
+    <input type="text" bind:value={fields.name} placeholder="Name">
+    <Message name="name" />
+    <input type="text" bind:value={fields.email} placeholder="Email address">
+    <Message name="email" />
     <button type="submit">Submit</button>
-</form>
+</Form>
+<style>
 
 ```
 ### Add isInvalid for making border styles.
@@ -64,10 +55,9 @@ Example:
 ...
 import {Message, isInvalid} from 'svelte-yup';
 ...
-let submited = false;
 $: invalid = (name)=>{
-    if(submited){
-        return isInvalid(errors, name);
+    if(submitted){
+        return isInvalid(schema, name, fields);
     }
     return false;
 }
@@ -78,7 +68,7 @@ $: invalid = (name)=>{
 
 
 ```html
-<input type="text" class="{invalid("Name") ? 'invalid' : ''}" placeholder="Name" bind:value={fields.name}>
+<input type="text" class:invalid={invalid("name")} bind:value={fields.name} placeholder="Name">
 <style>
 .invalid {
     border-color: red !important;
@@ -91,7 +81,7 @@ Example below to put all messages in one place by `AllMessages` component.
 import {AllMessages} from 'svelte-yup';
 ```
 ```html
-<AllMessages errors={errors} />
+<AllMessages />
 ```
 
 ### Components
@@ -112,16 +102,16 @@ import {AllMessages} from 'svelte-yup';
 ### Example disable button until everything validated
 
 ```js
+...
 let btnDisabled = false;
-$: if(submited){
-    errors = validate(schema, fields);
-    if(isValid(errors)){
+$: if(submitted){
+    btnDisabled = true;
+    isValid = schema.isValidSync(fields);
+    if(isValid){
         btnDisabled = false;
     }
-    else {
-        btnDisabled = true;
-    }
 }
+...
 ```
 
 ```html

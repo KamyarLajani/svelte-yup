@@ -1,6 +1,6 @@
 <script>
 import * as yup from 'yup';
-import {validate, isValid, Message} from 'svelte-yup';
+import {Form, Message} from 'svelte-yup';
 import Textfield from '@smui/textfield';
 import Button from '@smui/button';
 let schema = yup.object().shape({
@@ -11,27 +11,24 @@ let schema = yup.object().shape({
     gender: yup.string().required().label("Gender"),
 });
 let fields = {email: "", name: "", age:"", gender:"", answer: ""};
-let errors;
-let submited = false;
-$: if(submited){
-    errors = validate(schema, fields);
-}
-const formSubmit = ()=> {
-    submited = true;
-    errors = validate(schema, fields);
-    if(isValid(errors)){
+let submitted = false;
+let isValid;
+function formSubmit(){
+    submitted = true;
+    isValid = schema.isValidSync(fields);
+    if(isValid){
         alert('Everything is validated!');
     }
 }
 </script>
     
-<form class="form" on:submit|preventDefault="{formSubmit}">
+<Form class="form" {schema} {fields} submitHandler={formSubmit} {submitted}>
     <Textfield label="Name" type="text" bind:value={fields.name} />
-    <Message errors={errors} name="Name"/>
+    <Message name="name"/>
     <Textfield label="Email address" type="email" bind:value={fields.email}/>
-    <Message errors={errors} name="Email address"/>
+    <Message name="email"/>
     <Textfield label="Age" type="number" bind:value={fields.age}/>
-    <Message errors={errors} name="Age"/>
+    <Message name="age"/>
     <div class="form-group">
         <p>Gender</p>
         <div class="form-check">
@@ -41,10 +38,10 @@ const formSubmit = ()=> {
             <div class="radio">
                 <label><input type="radio" value="female" bind:group={fields.gender}> Female</label>
             </div>
-            <Message errors={errors} name="Gender"/>
+            <Message name="gender"/>
         </div>
     </div>
     <Textfield label="Answer 3+3 = " type="number" bind:value={fields.answer}/>
-    <Message errors={errors} name="Answer"/>
+    <Message name="answer"/>
     <Button letiant="raised" class="button">Submit</Button>
-</form>
+</Form>
