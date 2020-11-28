@@ -5,7 +5,7 @@ Svelte component library for [Yup](https://www.npmjs.com/package/yup) for form v
 ### Installation
 
 ```sh
-$ npm i --save-dev svelte-yup
+$ npm i svelte-yup --save-dev
 ```
 ```sh
 $ npm i yup
@@ -47,7 +47,7 @@ $ npm i yup
 <style>
 
 ```
-### Add isInvalid for making border styles.
+### Add isInvalid for making input border style.
 Example:
 
 ```html
@@ -66,7 +66,6 @@ $: invalid = (name)=>{
 
 ```
 
-
 ```html
 <input type="text" class:invalid={invalid("name")} bind:value={fields.name} placeholder="Name">
 <style>
@@ -83,23 +82,23 @@ import {AllMessages} from 'svelte-yup';
 ```html
 <AllMessages />
 ```
-
+### Custom Message color
+```html
+<Form ... color="#b00020">
+```
 ### Components
 
-| name | props |
-| ------ | ------ |
-| `Message` | `errors` and `name` |
-| `AllMessages` | `errors` |
+| name | props | description |
+| ------ | ------ | ------------- |
+| `Form` | `schema`, `fields`, `submitHandler`, `submitted` and `color` |  |
+| `Message` | `name` | Error message of a field name by `name` prop. name should be the schema field name (no label name)
+| `AllMessages` |  | Puts all field messages in one place |
 
 ### Functions
 
-`validate(schema:Object, fields:Object)` 
+`isInvalid(schema:Object, name:String, fields:Object)` 
 
-`isValid(errors:Array)` 
-
-`isInvalid(errors:Array, name:String)` 
-
-### Example disable button until everything validated
+### Example disable button until everything is validated
 
 ```js
 ...
