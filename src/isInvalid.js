@@ -1,8 +1,3 @@
-export let isValid = (schema, fields)=>{
-    let bool = schema.isValidSync(fields);
-    return bool;
-}
-
 export let isInvalid = (schema, name, fields)=>{
     let bool = false;
     try {

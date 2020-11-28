@@ -1,9 +1,10 @@
 <script>
     import {getContext} from 'svelte';
-    import {schemaKey, fieldsKey, submittedKey} from './key';
+    import {schemaKey, fieldsKey, submittedKey, colorKey} from './key';
     let schema = getContext(schemaKey);
     let fields = getContext(fieldsKey);
     let submitted = getContext(submittedKey);
+    let color = getContext(colorKey);
 </script>
   
 {#if $submitted}
@@ -11,7 +12,7 @@
     <p></p>
     {:catch errors}
       {#each errors.errors as error}
-        <p class="invalid">{error}</p>
+        <p class="invalid" style="color:{$color}">{error}</p>
       {/each}
   {/await}
 {/if}
