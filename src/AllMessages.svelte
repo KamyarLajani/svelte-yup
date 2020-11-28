@@ -1,13 +1,19 @@
 <script>
-export let errors;
+    import {getContext} from 'svelte';
+    import {schemaKey, fieldsKey, submittedKey} from './key';
+    let schema = getContext(schemaKey);
+    let fields = getContext(fieldsKey);
+    let submitted = getContext(submittedKey);
 </script>
   
-{#if errors}
-  {#if errors.length > 0}
-      {#each errors as error}
-            <p class="invalid">{error.errors[0]}</p>
+{#if $submitted}
+  {#await $schema.validate($fields, {abortEarly: false}) then result}
+    <p></p>
+    {:catch errors}
+      {#each errors.errors as error}
+        <p class="invalid">{error}</p>
       {/each}
-  {/if}
+  {/await}
 {/if}
   
 <style>
