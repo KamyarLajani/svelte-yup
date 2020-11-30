@@ -44,7 +44,7 @@ $ npm i yup
     <Message name="email" />
     <button type="submit">Submit</button>
 </Form>
-<style>
+
 
 ```
 ### Add isInvalid for making input border style.
