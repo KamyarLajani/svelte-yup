@@ -2,7 +2,7 @@
 ![npm](https://img.shields.io/npm/v/svelte-yup) ![NPM](https://img.shields.io/npm/l/svelte-yup) ![GitHub top language](https://img.shields.io/github/languages/top/KamyarLajani/SVELTE-YUP) ![npm](https://img.shields.io/npm/dm/svelte-yup)
 
 
-Svelte component library for [Yup](https://www.npmjs.com/package/yup) for form validation.
+Svelte component library using [Yup](https://www.npmjs.com/package/yup) for form validation.
 
 ### Installation
 
