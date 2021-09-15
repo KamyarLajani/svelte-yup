@@ -11,9 +11,13 @@
 
 {#if $submitted}
     {#await $schema.validateAt(name, $fields) then result}
-        <p class="valid"></p>
+        <slot name="valid">
+            <p class="valid"></p>
+        </slot>
         {:catch error}
-            <p class="invalid" style="color:{$color}">{error.errors[0]}</p>
+            <slot error={error.errors[0]}>
+                <p class="invalid" style="color:{$color}">{error.errors[0]}</p>
+            </slot>
     {/await}
 {/if}
 
@@ -25,4 +29,3 @@ p.valid {
     display: inline;
 }
 </style>
-  
