@@ -9,10 +9,14 @@
   
 {#if $submitted}
   {#await $schema.validate($fields, {abortEarly: false}) then result}
-    <p></p>
+    <slot name="valid">
+      <p></p>
+    </slot>
     {:catch errors}
       {#each errors.errors as error}
-        <p class="invalid" style="color:{$color}">{error}</p>
+        <slot {error}>
+          <p class="invalid" style="color:{$color}">{error}</p>
+        </slot>
       {/each}
   {/await}
 {/if}
@@ -24,4 +28,3 @@
       font-size: 14px;
   }
 </style>
-  
