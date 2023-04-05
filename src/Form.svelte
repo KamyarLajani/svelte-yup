@@ -21,6 +21,6 @@ $: $formSubmitted = submitted;
 $: $messageColor = color;
 </script>
 
-<form on:submit|preventDefault = {submitHandler} {...$$props}>
+<form on:submit|preventDefault = {submitHandler} {...$$restProps}>
 <slot></slot>
 </form>
